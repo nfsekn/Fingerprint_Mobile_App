@@ -6,10 +6,10 @@
 #include <LiquidCrystal_I2C.h>
 
 // --- FIREBASE VE WiFi AYARLARI ---
-#define API_KEY "AIzaSyCxZWugYrYLNLH33gCfdulhVjuurwE9PhA"
-#define DATABASE_URL "https://esp32-2bf47-default-rtdb.firebaseio.com"
-#define WIFI_SSID "Galaxy S20 FE 0EB9"
-#define WIFI_PASSWORD "spkp7878"
+#define API_KEY "apikey"
+#define DATABASE_URL "databaseurl"
+#define WIFI_SSID "wifissid"
+#define WIFI_PASSWORD "wifipassword"
 
 // --- PİN TANIMLARI ---
 #define SERVO_PIN 18
