@@ -1,50 +1,137 @@
-# Welcome to your Expo app 👋
+# ESP32 Mobile App - Firebase Parmak İzi Sistemi 🔐
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+ESP32 ile entegre çalışan, parmak izi doğrulama ve PIN yönetimi için React Native mobil uygulaması.
 
-## Get started
+## 🚀 Özellikler
 
-1. Install dependencies
+- 📱 Parmak izi doğrulama
+- 🔐 4 haneli PIN sistemi  
+- 🔥 Firebase Realtime Database entegrasyonu
+- 💡 ESP32 LED kontrolü
+- ⚡ Gerçek zamanlı veri senkronizasyonu
 
-   ```bash
-   npm install
-   ```
+## 📋 Gereksinimler
 
-2. Start the app
+- Node.js 18+
+- Expo CLI
+- Android Studio (Android için) veya Xcode (iOS için)
+- Firebase projesi
 
-   ```bash
-   npx expo start
-   ```
+## ⚙️ Kurulum
 
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
+1. Projeyi klonlayın:
 ```bash
-npm run reset-project
+git clone <repo-url>
+cd esp32mobileapp
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+2. Bağımlılıkları yükleyin:
+```bash
+npm install
+```
 
-## Learn more
+3. Firebase yapılandırmasını ayarlayın:
+   - `.env.example` dosyasını `.env` olarak kopyalayın
+   - Firebase proje bilgilerinizi `.env` dosyasına ekleyin:
 
-To learn more about developing your project with Expo, look at the following resources:
+```env
+EXPO_PUBLIC_FIREBASE_API_KEY=your_api_key_here
+EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN=your_auth_domain_here
+EXPO_PUBLIC_FIREBASE_DATABASE_URL=your_database_url_here
+EXPO_PUBLIC_FIREBASE_PROJECT_ID=your_project_id_here
+EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET=your_storage_bucket_here
+EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id_here
+EXPO_PUBLIC_FIREBASE_APP_ID=your_app_id_here
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## 🎯 Kullanım
 
-## Join the community
+### Geliştirme modunda çalıştırma:
 
-Join our community of developers creating universal apps.
+```bash
+npx expo start
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+### Android'de çalıştırma:
+
+```bash
+npx expo run:android
+```
+
+### iOS'ta çalıştırma:
+
+```bash
+npx expo run:ios
+```
+
+## 🔧 Firebase Yapılandırması
+
+1. Firebase Console'da yeni bir proje oluşturun
+2. Realtime Database'i etkinleştirin  
+3. Veritabanı kurallarını ayarlayın (geliştirme için):
+
+```json
+{
+  "rules": {
+    ".read": true,
+    ".write": true
+  }
+}
+```
+
+4. Web uygulaması ekleyin ve yapılandırma bilgilerini `.env` dosyasına ekleyin
+
+## 📱 ESP32 Entegrasyonu
+
+Bu uygulama ESP32 mikrodenetleyici ile çalışmak üzere tasarlanmıştır. ESP32 kodu `ESP32_Fingerprint.ino` dosyasında bulunmaktadır.
+
+### Firebase Veritabanı Yapısı:
+
+```
+esp32-database/
+├── pin: "1234"
+├── fingerprint_verified: true/false
+└── led/
+    └── status: 0/1
+```
+
+## 🛡️ Güvenlik Notları
+
+- `.env` dosyası `.gitignore`'a eklenmiştir
+- API anahtarlarınızı asla GitHub'a yüklemeyin
+- Üretim ortamında Firebase güvenlik kurallarını mutlaka sıkılaştırın
+- PIN kodlarını şifreli olarak saklamayı düşünün
+
+## 📂 Proje Yapısı
+
+```
+├── app/              # Uygulama ekranları
+│   ├── index.tsx     # Ana ekran
+│   └── (tabs)/       # Tab navigation
+├── src/
+│   └── services/     
+│       └── firebase.ts  # Firebase servisleri
+├── assets/           # Görseller ve medya
+├── components/       # Yeniden kullanılabilir componentler
+├── constants/        # Sabitler ve tema
+└── ESP32_Fingerprint.ino  # ESP32 Arduino kodu
+```
+
+## 🤝 Katkıda Bulunma
+
+1. Fork yapın
+2. Feature branch oluşturun (`git checkout -b feature/amazing-feature`)
+3. Commit yapın (`git commit -m 'Add some amazing feature'`)
+4. Push edin (`git push origin feature/amazing-feature`)
+5. Pull Request açın
+
+## 📝 Lisans
+
+Bu proje MIT lisansı altında lisanslanmıştır.
+
+## 🙏 Teşekkürler
+
+- [Expo](https://expo.dev)
+- [Firebase](https://firebase.google.com)
+- [React Native](https://reactnative.dev)
+
